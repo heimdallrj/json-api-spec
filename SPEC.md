@@ -1,4 +1,4 @@
-# json:api:spec v1.0.0-alpha.3
+# json:api:spec v1.0.0-alpha.4
 
 ## URI Construction
 
@@ -8,8 +8,8 @@
 
 Examples:
 ```
-GET https:/example-api.com/api/articles?limit=20&offset=100
-GET https:/example-api.com/api/v1/articles/1/comments?recent=true
+GET https:/example.com/api/articles?limit=20&offset=100
+GET https:/example.com/api/v1/articles/1/comments?recent=true
 ```
 
 ## Versioning

@@ -16,7 +16,10 @@ Here's an example JSON Response:
       "title": "Hello World!",
       "excerpt": "Neque porro quisquam est qui dolorem",
       "body": "<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit<p>",
-      "featured_image": "https://cdn.example.com/hello.png",
+      "images": [
+        "https://cdn.example.com/hello.png",
+        "https://cdn.example.com/hello-2.png"
+      ],
       "datestamp": "Sat, 25 Jul 2020 13:24:57 GMT",
       "authors": {
         "data": [
@@ -25,12 +28,12 @@ Here's an example JSON Response:
             "first_name": "John",
             "last_name": "Doe",
             "_links": {
-              "self": "http://example-api.com/authors/11"
+              "self": "http://example.com/api/authors/11"
             }
           }
         ],
         "_links": {
-          "self": "http://example-api.com/articles/1/authors/"
+          "self": "http://example.com/api/articles/1/authors/"
         }
       },
       "comments": {
@@ -45,16 +48,16 @@ Here's an example JSON Response:
               "email": "jane.doe@example.com",
               "avatar": "https://cdn.example.com/users/jane-doe.png",
               "_links": {
-                "self": "http://example-api.com/users/121"
+                "self": "http://example.com/api/users/121"
               }
             },
             "_links": {
-              "self": "http://example-api.com/comments/12"
+              "self": "http://example.com/api/comments/12"
             }
           }
         ],
         "_links": {
-          "self": "http://example-api.com/articles/1/comments/"
+          "self": "http://example.com/api/articles/1/comments/"
         }
       }
     }
@@ -69,8 +72,8 @@ Here's an example JSON Response:
     "resource": "articles"
   },
   "_links": {
-    "self": "http://example-api.com/articles",
-    "next": "http://example-api.com/articles?limit=20&offset=21"
+    "self": "http://example.com/api/articles",
+    "next": "http://example.com/api/articles?limit=20&offset=21"
   }
 }
 ```
