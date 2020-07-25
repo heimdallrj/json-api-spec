@@ -1,4 +1,4 @@
-# json:api:spec v1.0.0-alpha.2
+# json:api:spec v1.0.0-alpha.3
 
 ## URI Construction
 
