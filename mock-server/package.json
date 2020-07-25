@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/thinkholic/json-api-spec/issues"
   },
-  "homepage": "https://github.com/thinkholic/json-api-spec/mock-server#readme"
+  "homepage": "https://github.com/thinkholic/json-api-spec/blob/master/mock-server/README.md",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
