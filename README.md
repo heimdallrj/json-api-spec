@@ -4,7 +4,7 @@ A minimalistic specification for building RESTful APIs in JSON.
 
 This project inspired after [{json:api}](https://jsonapi.org/)
 
-**{json:api}** is undoubtedly one of the best API specifications and this project has no intention of replacing it. This approach is proposing more of a minimalistic, but scalable API Spec. which can use building RESTful APIs.
+**{json:api}** is one of the best API specifications we have around. The intention of this project isn't competing but proposing more of a minimalistic, but scalable API specification which can apply to build RESTful APIs.
 
 Here's an example JSON Response:
 
@@ -62,14 +62,14 @@ Here's an example JSON Response:
       }
     }
   ],
-  "_params": {
-    "limit": "20",
-    "offset": "1",
-    "html": "true"
-  },
   "_meta": {
     "request_id": "83dcefb7",
-    "resource": "articles"
+    "resource": "articles",
+    "params": {
+      "limit": "20",
+      "offset": "1",
+      "html": "true"
+    }
   },
   "_links": {
     "self": "http://example.com/api/articles",
