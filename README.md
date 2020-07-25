@@ -6,6 +6,10 @@ This project inspired after [{json:api}](https://jsonapi.org/)
 
 **{json:api}** is one of the best API specifications we have around. The intention of this project isn't competing but proposing more of a minimalistic, but scalable API specification which can apply to build RESTful APIs.
 
+This project is still in early stage. The idea is documenting every aspect of building RESTful APIs in the manner of minimalistic and scalable to fit for any kind of need.
+
+_________________
+
 Here's an example JSON Response:
 
 ```json
@@ -15,7 +19,7 @@ Here's an example JSON Response:
       "id": "1",
       "title": "Hello World!",
       "excerpt": "Neque porro quisquam est qui dolorem",
-      "body": "<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit<p>",
+      "body": "Neque porro **quisquam** est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
       "images": [
         "https://cdn.example.com/hello.png",
         "https://cdn.example.com/hello-2.png"
@@ -43,9 +47,7 @@ Here's an example JSON Response:
             "body": "Nice writeup!",
             "author": {
               "id": "121",
-              "first_name": "Jane",
-              "last_name": "Doe",
-              "email": "jane.doe@example.com",
+              "name": "Jane Doe",
               "avatar": "https://cdn.example.com/users/jane-doe.png",
               "_links": {
                 "self": "http://example.com/api/users/121"
@@ -68,7 +70,7 @@ Here's an example JSON Response:
     "params": {
       "limit": "20",
       "offset": "1",
-      "html": "true"
+      "content-type": "markdown", // markdown|html
     }
   },
   "_links": {
