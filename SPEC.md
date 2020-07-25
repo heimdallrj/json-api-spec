@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.8)
+# json:api:spec (v1.0.0-alpha.9)
 
 ## Status
 
@@ -35,8 +35,56 @@ A response object MUST contain at least one of the following fields:
 
 Additionally,
 
-* `meta`
 * `endpoints`
+* `meta`
+
+#### `data`
+
+```json
+{
+  "data": [],
+}
+```
+
+#### `error`
+
+```json
+{
+  "error": {
+    "code": "601",
+    "message": "Custom Error Message"
+  }
+}
+```
+
+##### `endpoints`
+
+```json
+{
+  "endpoints": {
+    "self": "/articles",
+    "next": "/articles?limit=20&offset=21",
+    "explicit": "/articles/1",
+    "extended": "/comments/12"
+  },
+}
+```
+
+#### `meta`
+
+```json
+{
+  "meta": {
+    "api_version": "1.0.0",
+    "resource": "articles",
+    "request_id": "83dcefb7",
+    "params": {
+      "limit": "20",
+      "offset": "1"
+    }
+  },
+}
+```
 
 ## HTTP Status Codes
 

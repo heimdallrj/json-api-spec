@@ -63,7 +63,7 @@ Here's an example JSON Response:
           }
         ],
         "endpoints": {
-          "explicit": "articles/1/comments/"
+          "explicit": "/articles/1/comments/"
         }
       },
       "endpoints": {
