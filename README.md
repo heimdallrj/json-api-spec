@@ -70,7 +70,7 @@ Here's an example JSON Response:
     "params": {
       "limit": "20",
       "offset": "1",
-      "content-type": "markdown", // markdown|html
+      "content_type": "markdown"
     }
   },
   "_links": {
