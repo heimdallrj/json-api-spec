@@ -1,15 +1,15 @@
-# json:api:spec v0.0.1
+# json:api:spec v1.0.0-alpha.2
 
 ## URI Construction
 
 ```
-GET /api/v{version-number}/{resource}/{id}/{resource}?{user-param-field}={url-param-value}
+[protocol(http|https)]://[host]:[port]/api/v{version-number}/{resource}/{id}/{resource}?{user-param-field}={url-param-value}
 ```
 
 Examples:
 ```
-GET /api/articles?limit=20&offset=100
-GET /api/v1/articles/1/comments?recent=true
+GET https:/example-api.com/api/articles?limit=20&offset=100
+GET https:/example-api.com/api/v1/articles/1/comments?recent=true
 ```
 
 ## Versioning
@@ -93,5 +93,6 @@ Use [Semantic Versioning](https://semver.org/)
 
 ## Links
 - {json:api} - [jsonapi.org](https://jsonapi.org/)
+- Semantic Versioning [semver.org](https://semver.org/)
 - HTTP Status Codes - [httpstatuses.com](https://httpstatuses.com/)
 
