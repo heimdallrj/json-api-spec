@@ -8,6 +8,10 @@ This project inspired after [{json:api}](https://jsonapi.org/)
 
 This project is still in early stage. The idea is documenting every aspect of building RESTful APIs in the manner of minimalistic and scalable to fit for any kind of need.
 
+Suggestions, comments are highly appreciated.
+
+Check [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
+
 _________________
 
 Here's an example JSON Response:
@@ -24,7 +28,7 @@ Here's an example JSON Response:
         "https://cdn.example.com/hello.png",
         "https://cdn.example.com/hello-2.png"
       ],
-      "datestamp": "Sat, 25 Jul 2020 13:24:57 GMT",
+      "timestamp": "Sat, 25 Jul 2020 13:24:57 GMT",
       "authors": {
         "data": [
           {
@@ -65,6 +69,7 @@ Here's an example JSON Response:
     }
   ],
   "_meta": {
+    "version": "1.0.0",
     "request_id": "83dcefb7",
     "resource": "articles",
     "params": {

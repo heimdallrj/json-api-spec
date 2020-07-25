@@ -1,9 +1,13 @@
-# json:api:spec v1.0.0-alpha.6
+# json:api:spec (v1.0.0-alpha.7)
+
+## Status
+
+Early draft.
 
 ## URI Construction
 
 ```
-[protocol(http|https)]://[host]:[port]/api/v{version-number}/{resource}/{id}/{resource}?{user-param-field}={url-param-value}
+[protocol(http|https)]://[host]:[port]/api/v{version-number}/{resource}/{id}/{resource}?{url-param-field}={url-param-value}
 ```
 
 Examples:
@@ -15,6 +19,24 @@ GET https:/example.com/api/v1/articles/1/comments?recent=true
 ## Versioning
 
 Use [Semantic Versioning](https://semver.org/)
+
+## Headers and Content-Type
+
+All requests MUST include `Content-Type: application/json` in the header message.
+
+## Structure
+
+### Response
+
+A response object MUST contain at least one of the following fields:
+
+* `data`
+* `error`
+
+Additionally,
+
+* `_meta`
+* `_links`
 
 ## HTTP Status Codes
 
