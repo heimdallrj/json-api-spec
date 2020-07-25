@@ -16,7 +16,9 @@ _________________
 
 Here's an example JSON Response:
 
-```json
+```
+GET /articles HTTP/1.1
+
 {
   "data": [
     {
@@ -36,7 +38,7 @@ Here's an example JSON Response:
             "first_name": "John",
             "last_name": "Doe",
             "endpoints": {
-              "extended": "/authors/11"
+              "extends": "/authors/11"
             }
           }
         ],
@@ -54,11 +56,11 @@ Here's an example JSON Response:
               "name": "Jane Doe",
               "avatar": "https://cdn.example.com/users/jane-doe.png",
               "endpoints": {
-                "extended": "/users/121"
+                "extends": "/users/121"
               }
             },
             "endpoints": {
-              "extended": "/comments/12"
+              "extends": "/comments/12"
             }
           }
         ],

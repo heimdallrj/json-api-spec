@@ -1,44 +1,111 @@
-# json:api:spec (v1.0.0-alpha.9)
+# json:api:spec (v1.0.0-alpha.10)
 
 ## Status
 
 Early draft.
 
-## URI Construction
+## Introduction
+
+TODO
+
+## Content Negotiation
 
 ```
-[protocol(http|https)]://[host]:[port]/api/v{version-number}/{resource}/{id}/{resource}?{url-param-field}={url-param-value}
+Content-Type: application/json
+Accept: application/vnd.api+json
 ```
 
-Examples:
+## API Structure
+
+### URI Component
+
+```
+[protocol(http|https)]://[host]:[port]/api/v[api-version-number]/[resource]/[identifier]?[url-param-field]=[url-param-value]
+```
+
+**Examples**
 ```
 GET https:/example.com/api/articles?limit=20&offset=100
 GET https:/example.com/api/v1/articles/1/comments?recent=true
 ```
 
-## Versioning
+### Versioning
 
 Use [Semantic Versioning](https://semver.org/)
 
-## Headers and Content-Type
+### Request/Response Overview
 
-All requests MUST include `Content-Type: application/json` in the header message.
+#### Request
 
-## Structure
+##### GET
 
-### Response
+```
+GET /articles HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+```
+
+##### POST
+
+```
+POST /articles HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": [{}]
+}
+```
+
+##### PUT
+
+```
+PUT /articles/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": [{}]
+}
+```
+
+##### PATCH
+
+```
+PATCH /articles/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": [{}]
+}
+```
+
+##### DELETE
+
+```
+DELETE /articles/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": [{}]
+}
+```
+
+#### Response
 
 A response object MUST contain at least one of the following fields:
 
-* `data`
-* `error`
+* [`data`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#data)
+* [`error`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#error)
 
 Additionally,
 
-* `endpoints`
-* `meta`
+* [`endpoints`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#endpoints)
+* [`meta`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#meta)
 
-#### `data`
+##### `data`
 
 ```json
 {
@@ -46,7 +113,7 @@ Additionally,
 }
 ```
 
-#### `error`
+##### `error`
 
 ```json
 {
@@ -57,20 +124,24 @@ Additionally,
 }
 ```
 
-##### `endpoints`
+###### `endpoints`
 
 ```json
 {
   "endpoints": {
     "self": "/articles",
-    "next": "/articles?limit=20&offset=21",
+    "first": "/articles?limit=20&offset=1",
+    "last": "/articles?limit=20&offset=100",
+    "prev": "/articles?limit=20&offset=21",
+    "next": "/articles?limit=20&offset=41",
     "explicit": "/articles/1",
-    "extended": "/comments/12"
+    "extends": "/comments/12",
+    "related": "/articles/1/meta"
   },
 }
 ```
 
-#### `meta`
+##### `meta`
 
 ```json
 {
@@ -86,7 +157,7 @@ Additionally,
 }
 ```
 
-## HTTP Status Codes
+#### HTTP Status Codes
 
 **1×× Informational**  
 100 Continue  
