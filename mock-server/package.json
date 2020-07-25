@@ -1,0 +1,19 @@
+{
+  "name": "json-api-spec",
+  "version": "1.0.0-alpha.10",
+  "description": "A Mock RESTful API Server compatible with json:api:spec",
+  "main": "./server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkholic/json-api-spec.git"
+  },
+  "author": "thinkholic <mailtokasun@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thinkholic/json-api-spec/issues"
+  },
+  "homepage": "https://github.com/thinkholic/json-api-spec/mock-server#readme"
+}
