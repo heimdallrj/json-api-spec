@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.10)
+# json:api:spec (v1.0.0-alpha.11)
 
 ## Status
 
@@ -12,7 +12,7 @@ TODO
 
 ```
 Content-Type: application/json
-Accept: application/vnd.api+json
+Accept: application/json
 ```
 
 ## API Structure

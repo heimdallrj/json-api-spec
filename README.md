@@ -27,8 +27,10 @@ GET /articles HTTP/1.1
       "summary": "Neque porro quisquam est qui dolorem",
       "body": "Neque porro **quisquam** est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
       "images": [
-        "https://cdn.example.com/hello.png",
-        "https://cdn.example.com/hello-2.png"
+        {
+          "url": "https://cdn.example.com/hello.png",
+          "alt": "Hello!"
+        }
       ],
       "timestamp": "Sat, 25 Jul 2020 13:24:57 GMT",
       "authors": {
