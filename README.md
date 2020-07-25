@@ -10,7 +10,7 @@ This project is still in early stage. The idea is documenting every aspect of bu
 
 Suggestions, comments are highly appreciated.
 
-Check [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
+Check the [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
 
 _________________
 
@@ -22,7 +22,7 @@ Here's an example JSON Response:
     {
       "id": "1",
       "title": "Hello World!",
-      "excerpt": "Neque porro quisquam est qui dolorem",
+      "summary": "Neque porro quisquam est qui dolorem",
       "body": "Neque porro **quisquam** est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
       "images": [
         "https://cdn.example.com/hello.png",
@@ -35,13 +35,13 @@ Here's an example JSON Response:
             "id": "11",
             "first_name": "John",
             "last_name": "Doe",
-            "_links": {
-              "self": "http://example.com/api/authors/11"
+            "endpoints": {
+              "extended": "/authors/11"
             }
           }
         ],
-        "_links": {
-          "self": "http://example.com/api/articles/1/authors/"
+        "endpoints": {
+          "explicit": "/articles/1/authors/"
         }
       },
       "comments": {
@@ -53,34 +53,37 @@ Here's an example JSON Response:
               "id": "121",
               "name": "Jane Doe",
               "avatar": "https://cdn.example.com/users/jane-doe.png",
-              "_links": {
-                "self": "http://example.com/api/users/121"
+              "endpoints": {
+                "extended": "/users/121"
               }
             },
-            "_links": {
-              "self": "http://example.com/api/comments/12"
+            "endpoints": {
+              "extended": "/comments/12"
             }
           }
         ],
-        "_links": {
-          "self": "http://example.com/api/articles/1/comments/"
+        "endpoints": {
+          "explicit": "articles/1/comments/"
         }
+      },
+      "endpoints": {
+        "explicit": "/articles/1"
       }
     }
   ],
-  "_meta": {
-    "version": "1.0.0",
-    "request_id": "83dcefb7",
+  "endpoints": {
+    "self": "/articles",
+    "next": "/articles?limit=20&offset=21"
+  },
+  "meta": {
+    "api_version": "1.0.0",
     "resource": "articles",
+    "request_id": "83dcefb7",
     "params": {
       "limit": "20",
       "offset": "1",
       "content_type": "markdown"
     }
-  },
-  "_links": {
-    "self": "http://example.com/api/articles",
-    "next": "http://example.com/api/articles?limit=20&offset=21"
   }
 }
 ```

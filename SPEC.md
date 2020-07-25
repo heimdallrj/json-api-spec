@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.7)
+# json:api:spec (v1.0.0-alpha.8)
 
 ## Status
 
@@ -35,8 +35,8 @@ A response object MUST contain at least one of the following fields:
 
 Additionally,
 
-* `_meta`
-* `_links`
+* `meta`
+* `endpoints`
 
 ## HTTP Status Codes
 
