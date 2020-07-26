@@ -1,43 +1,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const fs = require('fs');
-const uniqid = require('uniqid');
+const fs = require("fs");
+const uniqid = require("uniqid");
+
+const { validationMiddleware } = require("./middlewares");
+const { formatSuccessResponse, formatErrorMsg } = require("./utils/http");
 
 const app = express();
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("json:api:spec MockServer started on ::/api/*");
+  res.status(200).send("json:api:spec MockServer started on ::/api/*");
 });
 
+app.use("/api/*", validationMiddleware);
+
 let jsonSpec = {};
-
-const formatResponse = (data, { params, route, method }, resource) => {
-  const getEndpoints = () => {
-    let self = route.path.replace('/api', '');
-    Object.keys(params).forEach((p) => {
-      self = self.replace(`:${p}`, params[p])
-    });
-
-    return {
-      self
-    }
-  };
-
-  return {
-    data,
-    endpoints: getEndpoints(),
-    meta: {
-      request_id: uniqid(),
-      route: route.path,
-      resource,
-      method
-    }
-  }
+const config = {
+  prefix: "api",
 };
 
 module.exports = {
-  start: (port = 3001, specFp, prefix = 'api') => {
+  start: (port = 3001, specFp, prefix = config.prefix) => {
     jsonSpec = JSON.parse(fs.readFileSync(specFp));
     const resources = Object.keys(jsonSpec);
 
@@ -46,62 +30,73 @@ module.exports = {
 
       // GET /resource
       app.get(`/${prefix}/${resource}`, (req, res) => {
-        res.send(formatResponse(resourceJson, req, resource));
+        res.status(200).send(formatSuccessResponse(resourceJson, req));
       });
 
       // GET /resource/:id
       app.get(`/${prefix}/${resource}/:id`, (req, res) => {
-        const data = resourceJson.find((obj) => String(obj.id) === req.params.id);
-        res.send(formatResponse([data], req, resource));
+        const single = resourceJson.find(
+          (obj) => String(obj.id) === req.params.id
+        );
+
+        if (!single)
+          return res.status(404).send(formatErrorMsg(404, "Not Found"));
+
+        res.status(200).send(formatSuccessResponse([single], req));
       });
 
       // POST /resource
       app.post(`/${prefix}/${resource}`, (req, res) => {
-        const reqBody = req.body.data;
-        const data = [];
-        reqBody.forEach((d) => {
-          const single = {...d, id: uniqid()};
+        const { data } = req.body;
+        let single = null;
+
+        data.forEach((obj) => {
+          delete obj.id;
+          single = { id: uniqid(), ...obj };
           jsonSpec[resource].push(single);
-          data.push(single);
-        });        
+        });
         fs.writeFileSync(specFp, JSON.stringify(jsonSpec, null, 2));
 
-        res.send(formatResponse([data], req, resource));
+        res.status(201).send(formatSuccessResponse([single], req));
       });
 
       // PUT /resource/:id
       app.put(`/${prefix}/${resource}/:id`, (req, res) => {
-        const data = [];
-        const reqBody = req.body.data[0];
-        delete reqBody.id;
+        const { data } = req.body;
+        let single = null;
+
+        // TODO Error handling
+
+        delete data[0].id;
         jsonSpec[resource].forEach((obj, index) => {
           if (String(obj.id) === req.params.id) {
-            const single = {...jsonSpec[resource][index], ...reqBody};
-            data.push(single);
+            single = { ...jsonSpec[resource][index], ...data[0] };
             jsonSpec[resource][index] = single;
           }
         });
         fs.writeFileSync(specFp, JSON.stringify(jsonSpec, null, 2));
 
-        res.send(formatResponse([data], req, resource));
+        res.status(200).send(formatSuccessResponse([single], req));
       });
 
       // PATCH /resource/:id
       // TODO Impliment this properly later.
       app.patch(`/${prefix}/${resource}/:id`, (req, res) => {
-        const data = [];
-        const reqBody = req.body.data[0];
-        delete reqBody.id;
+        const { data } = req.body;
+        let single = null;
+
+        // TODO Error handling
+
+        delete data[0].id;
         jsonSpec[resource].forEach((obj, index) => {
           if (String(obj.id) === req.params.id) {
-            const single = {...jsonSpec[resource][index], ...reqBody};
-            data.push(single);
+            single = { ...jsonSpec[resource][index], ...data[0] };
             jsonSpec[resource][index] = single;
           }
         });
         fs.writeFileSync(specFp, JSON.stringify(jsonSpec, null, 2));
 
-        res.send(formatResponse([data], req, resource));
+        res.status(200).send(formatSuccessResponse([single], req));
       });
 
       // DELETE /resource/:id
@@ -119,7 +114,7 @@ module.exports = {
         jsonSpec[resource] = modifiedJsonSpecPerResource;
         fs.writeFileSync(specFp, JSON.stringify(jsonSpec, null, 2));
 
-        res.send(formatResponse([data], req, resource));
+        res.status(200).send(formatSuccessResponse(data, req));
       });
     });
 

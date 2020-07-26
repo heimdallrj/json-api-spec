@@ -80,18 +80,6 @@ GET /articles HTTP/1.1
   "endpoints": {
     "self": "/articles",
     "next": "/articles?limit=20&offset=21"
-  },
-  "meta": {
-    "api_version": "1.0.0",
-    "request_id": "83dcefb7",
-    "route": "/api/articles",
-    "resource": "articles",
-    "method": "GET",
-    "params": {
-      "limit": "20",
-      "offset": "1",
-      "content_type": "markdown"
-    }
   }
 }
 ```

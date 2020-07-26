@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.13)
+# json:api:spec (v1.0.0-alpha.14)
 
 ## Status
 
@@ -43,6 +43,7 @@ Use [Semantic Versioning](https://semver.org/)
 GET /articles HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+X-Request-ID: ?
 ```
 
 ##### POST
@@ -51,6 +52,7 @@ Accept: application/json
 POST /articles HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+X-Request-ID: ?
 
 {
   "data": [{}]
@@ -63,6 +65,7 @@ Accept: application/json
 PUT /articles/1 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+X-Request-ID: ?
 
 {
   "data": [{}]
@@ -75,6 +78,7 @@ Accept: application/json
 PATCH /articles/1 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+X-Request-ID: ?
 
 {
   "data": [{}]
@@ -87,6 +91,7 @@ Accept: application/json
 DELETE /articles/1 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+X-Request-ID: ?
 
 {
   "data": [{}]
@@ -103,7 +108,6 @@ A response object MUST contain at least one of the following fields:
 Additionally,
 
 * [`endpoints`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#endpoints)
-* [`meta`](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md#meta)
 
 ##### `data`
 
@@ -137,24 +141,6 @@ Additionally,
     "explicit": "/articles/1",
     "extends": "/comments/12",
     "related": "/articles/1/meta"
-  },
-}
-```
-
-##### `meta`
-
-```json
-{
-  "meta": {
-    "api_version": "1.0.0",
-    "request_id": "83dcefb7",
-    "route": "/api/articles",
-    "resource": "articles",
-    "method": "GET",
-    "params": {
-      "limit": "20",
-      "offset": "1"
-    }
   },
 }
 ```
