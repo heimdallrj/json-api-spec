@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.11)
+# json:api:spec (v1.0.0-alpha.12)
 
 ## Status
 
@@ -147,8 +147,10 @@ Additionally,
 {
   "meta": {
     "api_version": "1.0.0",
-    "resource": "articles",
     "request_id": "83dcefb7",
+    "route": "/api/articles",
+    "resource": "articles",
+    "method": "GET",
     "params": {
       "limit": "20",
       "offset": "1"
