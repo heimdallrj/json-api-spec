@@ -1,16 +1,17 @@
-const program = require("commander");
-const pkg = require("./package.json");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-program.version(pkg.version, "-v, --version");
+const app = express();
+app.use(bodyParser.json());
 
-program
-  .command("start")
-  .option("-p, --port", "Specify custom port")
-  .option("-s, --spec", "")
-  .option("-r, --routes", "")
-  .description("json-api start -p 3001 -s ./api.json -r routes.json")
-  .action((a, b, c) => {
-    console.log(a, b, c);
-  });
+app.get("/", (req, res) => {
+  res.send("json:api:spec MockServer started on ::/api/*");
+});
 
-program.parse(process.argv);
+module.exports = {
+  start: (port = 3001) => {
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}`);
+    });
+  },
+};

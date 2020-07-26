@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-require("../server.js");
+require("../index.js");
 require("../updateNotifier.js");
