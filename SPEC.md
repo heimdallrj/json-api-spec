@@ -1,4 +1,4 @@
-# json:api:spec (v1.0.0-alpha.12)
+# json:api:spec (v1.0.0-alpha.13)
 
 ## Status
 

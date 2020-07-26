@@ -1,6 +1,6 @@
 {
   "name": "json-api-spec",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.13",
   "description": "A Mock RESTful API Server compatible with json:api:spec",
   "main": "./index.js",
   "bin": {

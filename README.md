@@ -12,6 +12,8 @@ Suggestions, comments are highly appreciated.
 
 Check the [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
 
+Check [MockServer README](https://github.com/thinkholic/json-api-spec/tree/master/mock-server)
+
 _________________
 
 Here's an example JSON Response:

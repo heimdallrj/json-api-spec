@@ -30,13 +30,17 @@ Start MockServer
 mock-server -s ./api.json -p 3001
 ```
 
-The MockAPIServer will start on port 3001 (or on the port you specified).
+The MockAPIServer will start on port ::3001/api/* (or on the port you specified).
 
 ### Available Routes
 
 ```
 GET resource
 GET resource/:id
+POST resource
+PUT resource/:id
+PATCH resource/:id
+DELETE resource/:id
 ```
 
 ## License
