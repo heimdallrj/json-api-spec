@@ -1,5 +1,7 @@
 # json:api:spec MockServer
 
+[![npm version](https://badge.fury.io/js/json-api-spec.svg)](https://badge.fury.io/js/json-api-spec)
+
 Get up and running fully MockAPIServer with zero coding.
 
 ## Getting Started

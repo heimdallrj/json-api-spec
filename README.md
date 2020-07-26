@@ -12,7 +12,7 @@ Suggestions, comments are highly appreciated.
 
 Check the [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
 
-Check [MockServer README](https://github.com/thinkholic/json-api-spec/tree/master/mock-server)
+Check [MockServer README](https://github.com/thinkholic/json-api-spec/blob/master/mock-server/README.md)
 
 _________________
 
