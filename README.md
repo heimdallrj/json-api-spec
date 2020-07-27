@@ -6,13 +6,19 @@ This project inspired after [{json:api}](https://jsonapi.org/)
 
 **{json:api}** is one of the best API specifications we have around. The intention of this project isn't competing but proposing more of a minimalistic, but scalable API specification which can apply to build RESTful APIs.
 
+## SPEC
+
 This project is still in early stage. The idea is documenting every aspect of building RESTful APIs in the manner of minimalistic and scalable to fit for any kind of need.
 
 Suggestions, comments are highly appreciated.
 
 Check the [SPEC](https://github.com/thinkholic/json-api-spec/blob/master/SPEC.md).
 
-Check [MockServer README](https://github.com/thinkholic/json-api-spec/blob/master/mock-server/README.md)
+## MockServer
+
+Get up and running a MockAPIServer (based on proposed specification) with zero coding.
+
+Check [README](https://github.com/thinkholic/json-api-spec/blob/master/mock-server/README.md) for detailed explaination.
 
 _________________
 
@@ -20,6 +26,9 @@ Here's an example JSON Response:
 
 ```
 GET /articles HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+X-Request-ID: ?
 
 {
   "data": [
