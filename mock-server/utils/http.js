@@ -1,7 +1,7 @@
 const uniqid = require("uniqid");
 
 module.exports = {
-  formatErrorMsg: (code, message) => ({
+  formatErrorResponse: (code, message) => ({
     error: {
       code,
       message,

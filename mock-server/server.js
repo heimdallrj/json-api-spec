@@ -4,7 +4,8 @@ const fs = require("fs");
 const uniqid = require("uniqid");
 
 const { validationMiddleware } = require("./middlewares");
-const { formatSuccessResponse, formatErrorMsg } = require("./utils/http");
+const { formatSuccessResponse, formatErrorResponse } = require("./utils/http");
+const config = require("./config");
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,9 +17,6 @@ app.get("/", (req, res) => {
 app.use("/api/*", validationMiddleware);
 
 let jsonSpec = {};
-const config = {
-  prefix: "api",
-};
 
 module.exports = {
   start: (port = 3001, specFp, prefix = config.prefix) => {
@@ -40,7 +38,7 @@ module.exports = {
         );
 
         if (!single)
-          return res.status(404).send(formatErrorMsg(404, "Not Found"));
+          return res.status(404).send(formatErrorResponse(404, "Not Found"));
 
         res.status(200).send(formatSuccessResponse([single], req));
       });
